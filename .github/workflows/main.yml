@@ -5,7 +5,7 @@ on:
 
 jobs:
   terraform:
-    name: Teraform
+    name: TeraForm
     runs-on: ubuntu-latest
 
     defaults:
