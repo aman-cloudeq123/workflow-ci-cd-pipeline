@@ -1,11 +1,11 @@
-name: 'Terraform'
+name: Terraform
 
 on:
   workflow_dispatch:
 
 jobs:
   terraform:
-    name: 'Teraform'
+    name: Teraform
     runs-on: ubuntu-latest
 
     defaults:
