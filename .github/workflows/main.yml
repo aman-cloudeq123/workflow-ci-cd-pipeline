@@ -38,7 +38,11 @@ jobs:
         aws-region : us-west-1
 
     - name: Terraform plan
-      run : terraform  plan 
+      run : |
+             cd example
+             terraform  plan 
 
     - name: Terraform apply
-      run : terraform  apply -auto-approve      
+      run : | 
+            cd example
+            terraform  apply -auto-approve     
