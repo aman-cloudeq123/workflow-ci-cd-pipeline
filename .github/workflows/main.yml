@@ -24,8 +24,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
     - name: Go to example folder
       run : |
-        cd example
-        ls -a
+        cd example ls -a
 
     - name: Terraform Init
       run : |
