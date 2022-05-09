@@ -28,9 +28,9 @@ jobs:
     - name: Configure AWS Crendentials
       uses: aws-action/configure-aws-crendentials@v1
       with :
-        aws-access-key-id: ${{secret.aws-access-key-id}} 
-        aws_secret_access_key_id: ${{secret.aws_secret_access_key_id}}
-        aws_session_token: ${{secret.aws_session_token}}
+        aws-access-key-id: ${{secrets.aws-access-key-id}} 
+        aws_secret_access_key_id: ${{secrets.aws_secret_access_key_id}}
+        aws_session_token: ${{secrets.aws_session_token}}
         aws-region : us-west-1
 
     - name: Terraform plan
