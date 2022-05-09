@@ -5,7 +5,7 @@ on:
   
 env:
   BUCKET: test-lambda-bucket-1999
-  TFSTATE_STATE: amannew.tfstate
+  TFSTATE_FILE: amannew.tfstate
 
 jobs:
   terraform:
