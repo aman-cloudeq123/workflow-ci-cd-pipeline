@@ -20,6 +20,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      
+              
 
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
@@ -28,7 +30,7 @@ jobs:
 #               cd "example/" 
               
     - name: Configure AWS Crendentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v2
       with :
         aws-access-key-id: ${{secrets.aws-access-key-id}} 
         aws_secret_access_key_id: ${{secrets.aws_secret_access_key_id}}
