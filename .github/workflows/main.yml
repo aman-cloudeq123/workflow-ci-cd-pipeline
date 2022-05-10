@@ -24,12 +24,12 @@ jobs:
       uses: hashicorp/setup-terraform@v1
     - name: Go to example folder
       run : |
-        cd example 
+              cd example 
 
     - name: Terraform Initilize
       run : |
-        cd example
-        terraform init -reconfigure -backend-config="bucket=${{BUCKET}} -backend-config="key=${{TFSTATE_FILE}}
+              cd example
+              terraform init -reconfigure -backend-config="bucket=${{BUCKET}} -backend-config="key=${{TFSTATE_FILE}}
 
 #     - name: Conical format
 #       run : terraform fmt -check
