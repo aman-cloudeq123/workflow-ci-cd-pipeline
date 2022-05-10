@@ -5,7 +5,7 @@ on:
 
 
 env:
-  BUCKET: test-lambda-bucket-1999
+  BUCKET: lambda-test-assigement
   TFSTATE_FILE: amanrathore1.tfstate
   region: ap-south-1
   
