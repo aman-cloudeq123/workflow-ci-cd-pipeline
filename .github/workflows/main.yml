@@ -5,7 +5,7 @@ on:
   
 env:
   BUCKET: test-lambda-bucket-1999
-  TFSTATE_FILE: aman.tfstate
+  TFSTATE_FILE: amanrathore.tfstate
 
 
 jobs:
