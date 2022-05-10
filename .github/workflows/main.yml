@@ -12,9 +12,9 @@ jobs:
     name: TeraForm1
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        shell: bash
+#     defaults:
+#       run:
+#         shell: bash
 
     steps:
     - name: Checkout
