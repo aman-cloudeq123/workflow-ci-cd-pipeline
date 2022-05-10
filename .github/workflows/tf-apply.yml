@@ -1,79 +1,60 @@
-name: Terraform1
+name: Terraform CD
 
 on:
-  workflow_dispatch:
-  
-env:
-  BUCKET: test-lambda-bucket-1999
-  TFSTATE_FILE: amancloudeq.tfstate
+  workflow_dispatch
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
 
+env:
+  BUCKET: z-test-assignment
+  TFSTATE_FILE: lambda.tfstate
+  
 
 jobs:
   terraform:
-    name: TeraFORM
+    name: 'Terraform'
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        shell: bash
-
+    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      
-              
-
-    - name: setup terraform
-      uses: hashicorp/setup-terraform@v1
-    - name: Go to example folder
-      run : |
-              cd "example"
-              
-    - name: Configure AWS Crendentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with :
-        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}} 
-        aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-        aws_session_token: ${{secrets.AWS_SESSION_TOKEN}}
-        aws-region : us-east-1
-          
-
-    - name: terraform init
-
-      id: init
-
-      run: |
-
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+         
+ 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+      - name: terraform init 
+        id: init
+        run: |
           cd example
-
           terraform init -reconfigure -backend-config="bucket=$BUCKET" -backend-config="key=$TFSTATE_FILE" 
-
-    - name: Terraform Validate
-
-      id: validate
-
-      run: |
-
+      - name: Terraform Validate
+        id: validate
+        run: |
           cd example
-
           terraform validate -no-color
-
-    - name: Terraform Plan
-
-      id: plan
-
-      run: |
-
+      - name: Terraform Plan
+        id: plan
+        run: |
           cd example
-
           terraform plan -no-color
-
-     
-
-    - name: Terraform Apply
-
-      run: |
-
+        continue-on-error: true
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: |
           cd example
-
-          terraform apply -auto-approve
+          exit 1
+      - name: Terraform Apply
+        run: |
+          cd example
+          terraform apply -auto-approve 
