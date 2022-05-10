@@ -2,13 +2,10 @@ name: Terraform CD
 
 on:
   workflow_dispatch
-  # push:
-  #   branches:
-  #     - main
-  # pull_request:
+
 
 env:
-  BUCKET: z-test-assignment
+  BUCKET: teest-
   TFSTATE_FILE: lambda.tfstate
   
 
