@@ -6,7 +6,7 @@ on:
 env:
   BUCKET: test-lambda-bucket-1999
   TFSTATE_FILE: aman.tfstate
-  region: up=south-1
+  Region: up=south-1
 
 jobs:
   terraform:
