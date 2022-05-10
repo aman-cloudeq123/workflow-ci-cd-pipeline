@@ -31,8 +31,8 @@ jobs:
         cd example
         terraform init -reconfigure -backend-config="bucket=${{BUCKET}} -backend-config="key=${{TFSTATE_FILE}}
 
-    - name: Conical format
-      run : terraform fmt -check
+#     - name: Conical format
+#       run : terraform fmt -check
 
     - name: Configure AWS Crendentials
       uses: aws-actions/configure-aws-credentials@v1
