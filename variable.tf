@@ -68,7 +68,7 @@ variable "private-sg" {
     
      
      
-     port = 22
+     port = 3389
      protocol = "tcp"
      cidr_blocks=["0.0.0.0/0"]
      
