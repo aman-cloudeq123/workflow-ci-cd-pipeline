@@ -5,8 +5,8 @@ on:
 
 
 env:
-  BUCKET: teest-
-  TFSTATE_FILE: lambda.tfstate
+  BUCKET: test-lambda-bucket-1999
+  TFSTATE_FILE: aman.tfstate
   
 
 jobs:
