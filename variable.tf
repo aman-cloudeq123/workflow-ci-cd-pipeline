@@ -5,7 +5,7 @@ variable "env" {
  
 variable "cidr" {
   type        = string
-  description = "The IP range to use for the VPC"
+  description = "The IP range to use for the VPc"
   default     = "20.0.0.0/16"
 }
 
