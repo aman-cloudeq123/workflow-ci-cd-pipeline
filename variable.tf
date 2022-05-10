@@ -54,29 +54,29 @@ variable "public-sg" {
  }  
 }
 
-variable "private-sg" {
-    type=map(object({
-        port=number
+# variable "private-sg" {
+#     type=map(object({
+#         port=number
        
-        protocol=string
-        cidr_blocks=list(string)
-    }))
+#         protocol=string
+#         cidr_blocks=list(string)
+#     }))
 
 
- default = {
-   "publicport1" = {
+#  default = {
+#    "publicport1" = {
     
      
      
-     port = 22
-     protocol = "tcp"
-     cidr_blocks=["0.0.0.0/0"]
+#      port = 22
+#      protocol = "tcp"
+#      cidr_blocks=["0.0.0.0/0"]
      
   
     
    
-   }
-}
+#    }
+# }
 }
 
 
