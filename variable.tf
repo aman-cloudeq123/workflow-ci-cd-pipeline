@@ -37,20 +37,8 @@ variable "public-sg" {
      cidr_blocks=["0.0.0.0/0"]
      
    }
-    "port443" = {
-     
-     port = 443
-     protocol = "tcp"
-    cidr_blocks=["0.0.0.0/0"]
-     
-   }
-   "port22" = {
-     
-     port = 22
-     protocol = "tcp"
-     cidr_blocks=["0.0.0.0/0"]
-     
-   }
+    
+
  }  
 }
 
