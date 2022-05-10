@@ -34,7 +34,7 @@ jobs:
         id: init
         run: |
           cd example
-          terraform init -reconfigure -backend-config="bucket=$BUCKET" -backend-config="key=$TFSTATE_FILE" -backend-config="Region=$region" 
+          terraform init -reconfigure -backend-config="bucket=$BUCKET" -backend-config="key=$TFSTATE_FILE" -backend-config="region=$region" 
       - name: Terraform Validate
         id: validate
         run: |
