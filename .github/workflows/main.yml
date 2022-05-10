@@ -6,6 +6,7 @@ on:
 env:
   BUCKET: test-lambda-bucket-1999
   TFSTATE_FILE: aman.tfstate
+  region: up=south-1
 
 jobs:
   terraform:
@@ -28,8 +29,8 @@ jobs:
 
     - name: Terraform Initilize
       run : |
-              cd example
-              terraform init -reconfigure -backend-config="bucket=${{BUCKET}} -backend-config="key=${{TFSTATE_FILE}}
+              cd "example/"
+              terraform init -reconfigure -backend-config="bucket=${{BUCKET}} -backend-config="key=${{TFSTATE_FILE}} -backend-config="Region=${{region}}
 
 #     - name: Conical format
 #       run : terraform fmt -check
@@ -44,10 +45,10 @@ jobs:
 
     - name: Terraform plan
       run : |
-             cd example
+             cd "example/"
              terraform  plan 
 
     - name: Terraform apply
       run : | 
-            cd example
+            cd "example/"
             terraform  apply -auto-approve     
