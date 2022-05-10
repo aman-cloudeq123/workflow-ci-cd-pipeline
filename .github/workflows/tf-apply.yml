@@ -1,4 +1,4 @@
-name: Terraform CD
+name: Terraform AR
 
 on:
   workflow_dispatch
@@ -11,7 +11,7 @@ env:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'TerraforM'
     runs-on: ubuntu-latest
     
     steps:
