@@ -23,9 +23,9 @@ jobs:
 
     - name: setup terraform
       uses: hashicorp/setup-terraform@v1
-    - name: Go to example folder
-      run : |
-              cd "example/" 
+#     - name: Go to example folder
+#       run : |
+#               cd "example/" 
               
     - name: Configure AWS Crendentials
       uses: aws-actions/configure-aws-credentials@v1
