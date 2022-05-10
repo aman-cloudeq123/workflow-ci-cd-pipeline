@@ -26,6 +26,15 @@ jobs:
     - name: Go to example folder
       run : |
               cd "example/" 
+              
+    - name: Configure AWS Crendentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with :
+        aws-access-key-id: ${{secrets.aws-access-key-id}} 
+        aws_secret_access_key_id: ${{secrets.aws_secret_access_key_id}}
+        aws_session_token: ${{secrets.aws_session_token}}
+        aws-region : us-west-1
+          
 
     - name: Terraform Initilize
       run : |
@@ -35,14 +44,7 @@ jobs:
 #     - name: Conical format
 #       run : terraform fmt -check
 
-    - name: Configure AWS Crendentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with :
-        aws-access-key-id: ${{secrets.aws-access-key-id}} 
-        aws_secret_access_key_id: ${{secrets.aws_secret_access_key_id}}
-        aws_session_token: ${{secrets.aws_session_token}}
-        aws-region : us-west-1
-
+    
     - name: Terraform plan
       run : |
              cd "example/"
