@@ -6,7 +6,7 @@ module "sc-group"{
 }
 
 provider "aws" {
-    profile = "default"
+#     profile = "default"
     region = "us-west-1"
   
 }
