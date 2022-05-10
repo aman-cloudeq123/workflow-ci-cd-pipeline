@@ -36,21 +36,42 @@ jobs:
         aws-region : us-west-1
           
 
-    - name: Terraform Initilize
-      run : |
-              cd "example/"
-              terraform init -reconfigure -backend-config="bucket=${{BUCKET}} -backend-config="key=${{TFSTATE_FILE}} -backend-config="Region=${{region}}
+    - name: terraform init
 
-#     - name: Conical format
-#       run : terraform fmt -check
+      id: init
 
-    
-    - name: Terraform plan
-      run : |
-             cd "example/"
-             terraform  plan 
+      run: |
 
-    - name: Terraform apply
-      run : | 
-            cd "example/"
-            terraform  apply -auto-approve     
+          cd example
+
+          terraform init -reconfigure -backend-config="bucket=$BUCKET" -backend-config="key=$TFSTATE_FILE" 
+
+    - name: Terraform Validate
+
+      id: validate
+
+      run: |
+
+          cd example
+
+          terraform validate -no-color
+
+    - name: Terraform Plan
+
+      id: plan
+
+      run: |
+
+          cd example
+
+          terraform plan -no-color
+
+     
+
+    - name: Terraform Apply
+
+      run: |
+
+          cd example
+
+          terraform apply -auto-approve
