@@ -4,11 +4,7 @@ on:
   workflow_dispatch
 
 
-# env:
-#   BUCKET: lambda-test-assigement
-#   TFSTATE_FILE: amanrathore1.tfstate
-#   region: ap-south-1
-  
+
   
 
 jobs:
