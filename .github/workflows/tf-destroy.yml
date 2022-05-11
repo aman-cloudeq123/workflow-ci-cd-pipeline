@@ -1,1 +1,45 @@
+name: Terraform AR
 
+on:
+  workflow_dispatch
+
+
+# env:
+#   BUCKET: lambda-test-assigement
+#   TFSTATE_FILE: amanrathore1.tfstate
+#   region: ap-south-1
+  
+  
+
+jobs:
+  terraform:
+    name: 'TerraforM'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
+          aws-session-token: ${{ secrets.AWS_SESSION }}
+          aws-region: ap-south-1
+          
+      - name: terraform init 
+        id: init
+        run: |
+          cd example
+          terraform init 
+        
+      
+      
+     
+      - name: Terraform Destroy
+        run: |
+          cd example
+          terraform destroy -auto-approve 
